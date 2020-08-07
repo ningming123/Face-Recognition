@@ -3,12 +3,12 @@ package com.example.face.recognition.service;
 import com.baidu.aip.face.AipFace;
 import com.example.face.recognition.model.FaceDetect;
 import com.example.face.utils.PictureUtils;
+import com.example.face.utils.StatusCodeUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-
 import java.io.File;
+import java.util.Date;
 import java.util.HashMap;
 
 @Service
@@ -35,15 +35,15 @@ public class FaceRecognitionService {
         FaceDetect face = new FaceDetect();
         face.setError_msg(res.getString("error_msg"));
         face.setError_code(res.getInt("error_code"));
-        //face.setTimestamp(DateUtil.stringToDate(res.getLong("timestamp"),"yyyy-MM-dd HH:mm:ss"));
+        face.setTimestamp(new Date());
 
         JSONArray faceList = res.getJSONObject("result").getJSONArray("face_list");
         JSONObject result = faceList.getJSONObject(0);
         face.setAge(result.getInt("age"));
         face.setBeauty(result.getDouble("beauty"));
-        face.setEmotion(result.getJSONObject("emotion").getString("type"));
-        face.setGender(result.getJSONObject("gender").getString("type"));
-        face.setFace_shape(result.getJSONObject("face_shape").getString("type"));
+        face.setEmotion(StatusCodeUtils.getEmotionName(result.getJSONObject("emotion").getString("type")));
+        face.setGender(StatusCodeUtils.getGenderName(result.getJSONObject("gender").getString("type")));
+        face.setFace_shape(StatusCodeUtils.getFaceShap(result.getJSONObject("face_shape").getString("type")));
         return face;
     }
 
