@@ -17,7 +17,7 @@ public class FaceDetect implements Serializable {
     private double beauty; //颜值
     private Integer age; //年龄
     private String error_msg; //错误信息
-    private Date timestamp; //检测时间
+    private String timestamp; //检测时间
     private Integer error_code; //错误代码
 
 }

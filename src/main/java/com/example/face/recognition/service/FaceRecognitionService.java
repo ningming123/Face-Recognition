@@ -2,17 +2,28 @@ package com.example.face.recognition.service;
 
 import com.baidu.aip.face.AipFace;
 import com.example.face.recognition.model.FaceDetect;
+import com.example.face.utils.DateUtil;
 import com.example.face.utils.PictureUtils;
 import com.example.face.utils.StatusCodeUtils;
+import com.example.face.utils.json.JsonResult;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+
 import java.io.File;
+import java.io.IOException;
 import java.util.Date;
 import java.util.HashMap;
 
 @Service
 public class FaceRecognitionService {
+
+    @Value("${server.file.imagePath}")
+    private String imagePath;
+
     public static final String APP_ID = "11749711";
     public static final String API_KEY = "AONDr7sNICyEQNgc0OgkPuUe";
     public static final String SECRET_KEY = "KLb2VBtWQHGdQKb7mt3qUugwppYF1FMs";
@@ -35,7 +46,7 @@ public class FaceRecognitionService {
         FaceDetect face = new FaceDetect();
         face.setError_msg(res.getString("error_msg"));
         face.setError_code(res.getInt("error_code"));
-        face.setTimestamp(new Date());
+        face.setTimestamp(DateUtil.dateToString(new Date(),"yyyy-MM-dd HH:mm:ss"));
 
         JSONArray faceList = res.getJSONObject("result").getJSONArray("face_list");
         JSONObject result = faceList.getJSONObject(0);
@@ -44,6 +55,7 @@ public class FaceRecognitionService {
         face.setEmotion(StatusCodeUtils.getEmotionName(result.getJSONObject("emotion").getString("type")));
         face.setGender(StatusCodeUtils.getGenderName(result.getJSONObject("gender").getString("type")));
         face.setFace_shape(StatusCodeUtils.getFaceShap(result.getJSONObject("face_shape").getString("type")));
+
         return face;
     }
 
