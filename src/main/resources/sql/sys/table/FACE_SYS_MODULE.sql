@@ -1,23 +1,24 @@
 -- Create table
 create table FACE_SYS_MODULE
 (
-  ID        VARCHAR2(16),
+  ID        VARCHAR2(16) not null,
   NAME      VARCHAR2(64),
   URL       VARCHAR2(100),
   PARENT_ID VARCHAR2(16),
   SORT      NUMBER,
   ICON      VARCHAR2(16),
   DESCRIBE  VARCHAR2(64),
-  CODE      VARCHAR2(16)
+  CODE      VARCHAR2(16),
+  FLAG      VARCHAR2(2)
 )
 tablespace USERS
   pctfree 10
   initrans 1
   maxtrans 255;
--- Add comments to the table 
+-- Add comments to the table
 comment on table FACE_SYS_MODULE
   is '²Ëµ¥';
--- Add comments to the columns 
+-- Add comments to the columns
 comment on column FACE_SYS_MODULE.NAME
   is '²Ëµ¥Ãû³Æ';
 comment on column FACE_SYS_MODULE.URL
@@ -32,3 +33,13 @@ comment on column FACE_SYS_MODULE.DESCRIBE
   is 'ÃèÊö';
 comment on column FACE_SYS_MODULE.CODE
   is '±àÂë';
+comment on column FACE_SYS_MODULE.FLAG
+  is '0É¾³ý£¬1Î´É¾³ý';
+-- Create/Recreate primary, unique and foreign key constraints
+alter table FACE_SYS_MODULE
+  add constraint MODULE_PRIMARY primary key (ID)
+  using index
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255;
