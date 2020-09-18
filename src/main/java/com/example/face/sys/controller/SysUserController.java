@@ -14,24 +14,14 @@ import java.util.List;
 public class SysUserController {
     @Autowired
     private SysUserService userService;
-    @Autowired
-    private SysUserServiceImpl t;
 
-    @RequestMapping("/test")
-    public List<SysUser> getUser(){
+    @RequestMapping("/getUserList")
+    public List<SysUser> getUserList(){
         return userService.getUserList();
     }
 
-    @RequestMapping("/saveUser")
-    public void saveUser(){
-        SysUser user = new SysUser();
-        user.setUserName("admin");
-        user.setPassWord("123456");
-        user.setEmail("1111@qq.com");
-        user.setIp("127.0.0.1");
-        user.setPhone("13700711111");
-        //t.saveUser(user);
-       // t.getUser("1");
-         userService.saveUser(user);
+    @RequestMapping("/insert")
+    public void insert(SysUser sysUser){
+         userService.insert(sysUser);
     }
 }

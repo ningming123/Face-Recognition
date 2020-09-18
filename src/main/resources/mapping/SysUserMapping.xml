@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+        <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.face.sys.mapper.SysUserMapper">
+    <resultMap id="SysUser" type="com.example.face.sys.model.SysUser">
+        <result column="id" jdbcType="INTEGER" property="id" />
+        <result column="userName" jdbcType="VARCHAR" property="userName" />
+        <result column="passWord" jdbcType="VARCHAR" property="passWord" />
+        <result column="realName" jdbcType="VARCHAR" property="realName" />
+    </resultMap>
+
+    <select id="getUserById" parameterType="String" resultType="SysUser">
+        select * from FACE_SYS_USER where id = #{id}
+    </select>
+
+    <select id="getUserList" resultType="SysUser">
+        select * from FACE_SYS_USER
+    </select>
+
+    <insert id="insert" parameterType="SysUser" >
+        INSERT INTO FACE_SYS_USER (
+              ID ,
+              USERNAME,
+              PASSWORD,
+              RANDOMCODE,
+              REALNAME,
+              DEPARTMENT,
+              ROLE_ID ,
+              PHONE ,
+              IP,
+              CREATE_TIME,
+              EMAIL,
+              FLAG
+        )
+        VALUES (
+              SEQ_FACE_SYS_USER.nextval,
+              #{userName},
+              #{passWord},
+              #{randomCode},
+              #{realName},
+              #{department},
+              #{roleId},
+              #{phone},
+              #{ip},
+              sysdate,
+              #{email},
+              '1'
+        )
+    </insert>
+    <update id="update" parameterType="SysUser">
+        UPDATE FACE_SYS_USER SET
+              USERNAME = #{userName},
+              PASSWORD = #{passWord} ,
+              RANDOMCODE = #{randomCode} ,
+              REALNAME = #{realName} ,
+              DEPARTMENT = #{department} ,
+              ROLE_ID  = #{roleId} ,
+              PHONE = #{phone}  ,
+              IP  = #{ip} ,
+              UPDATE_TIME = sysdate,
+              EMAIL = #{email} ,
+              FLAG = #{flag}
+    </update>
+</mapper>

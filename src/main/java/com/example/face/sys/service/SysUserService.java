@@ -5,11 +5,11 @@ import com.example.face.sys.model.SysUser;
 import java.util.List;
 
 public interface SysUserService {
-    SysUser getUser(String id);
+    SysUser getUserById(String id);
 
-    void saveUser(SysUser user);
+    void insert(SysUser user);
 
     List<SysUser> getUserList();
 
-    void updateUser(SysUser user);
+    void update(SysUser user);
 }

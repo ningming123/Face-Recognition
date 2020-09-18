@@ -5,7 +5,6 @@ import com.example.face.sys.model.SysUser;
 import com.example.face.sys.service.SysUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 @Service(value = "userService")
@@ -15,11 +14,12 @@ public class SysUserServiceImpl implements SysUserService {
 
 
     @Override
-    public SysUser getUser(String id){
+    public SysUser getUserById(String id){
         return sysUserMapper.getUserById(id);
     }
+
     @Override
-    public void saveUser(SysUser user){
+    public void insert(SysUser user){
          sysUserMapper.insert(user);
     }
     @Override
@@ -28,7 +28,7 @@ public class SysUserServiceImpl implements SysUserService {
     }
 
     @Override
-    public void updateUser(SysUser user){
+    public void update(SysUser user){
         sysUserMapper.update(user);
     }
 }
