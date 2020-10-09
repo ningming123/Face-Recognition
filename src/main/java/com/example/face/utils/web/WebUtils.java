@@ -1,4 +1,4 @@
-package com.example.face.utils;
+package com.example.face.utils.web;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;

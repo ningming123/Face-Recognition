@@ -2,19 +2,14 @@ package com.example.face.recognition.service;
 
 import com.baidu.aip.face.AipFace;
 import com.example.face.recognition.model.FaceDetect;
-import com.example.face.utils.DateUtil;
-import com.example.face.utils.PictureUtils;
-import com.example.face.utils.StatusCodeUtils;
-import com.example.face.utils.json.JsonResult;
+import com.example.face.utils.date.DateUtil;
+import com.example.face.utils.image.PictureUtils;
+import com.example.face.utils.facerecognition.StatusCodeUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
-
 import java.io.File;
-import java.io.IOException;
 import java.util.Date;
 import java.util.HashMap;
 

@@ -1,4 +1,4 @@
-package com.example.face.utils;
+package com.example.face.utils.date;
 
 
 import java.text.DateFormat;
@@ -10,8 +10,8 @@ import java.util.*;
 /**
  * 日期格式处理
  *
- * @author 孔垂云
- * @date 2017-05-23
+ * @author 
+ * @date 
  */
 public class DateUtil {
     private static final String defaultDateFormatStr = "yyyy-MM-dd";// 系统默认的格式化字符串
@@ -52,8 +52,8 @@ public class DateUtil {
      * 取得系统时间，格式为yyyy-MM-dd HH:mm:ss
      *
      * @return
-     * @author 孔垂云
-     * @date 2017-05-23
+     * @author 
+     * @date 
      */
     public static String getSystemTime() {
         String strTime = "";
@@ -318,8 +318,8 @@ public class DateUtil {
      * 取得上个月的第一天
      *
      * @return
-     * @author 孔垂云
-     * @date 2017-05-23
+     * @author 
+     * @date 
      */
     public static String getFirstDayOfLastMonth() {
         Calendar cal = Calendar.getInstance();

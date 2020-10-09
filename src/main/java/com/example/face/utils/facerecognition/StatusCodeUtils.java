@@ -1,4 +1,4 @@
-package com.example.face.utils;
+package com.example.face.utils.facerecognition;
 
 public class StatusCodeUtils {
 

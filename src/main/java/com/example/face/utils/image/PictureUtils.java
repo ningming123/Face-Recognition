@@ -1,4 +1,4 @@
-package com.example.face.utils;
+package com.example.face.utils.image;
 
 import sun.misc.BASE64Encoder;
 import java.io.FileInputStream;
