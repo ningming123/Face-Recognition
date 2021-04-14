@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+        <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.face.sys.mapper.SysModuleMapper">
+    <resultMap id="SysModule" type="com.example.face.sys.model.SysModule">
+        <result column="id" jdbcType="INTEGER" property="id" />
+        <result column="label" jdbcType="VARCHAR" property="label" />
+        <result column="icon" jdbcType="VARCHAR" property="icon" />
+        <result column="path" jdbcType="VARCHAR" property="path" />
+        <result column="parentId" jdbcType="VARCHAR" property="parentId" />
+    </resultMap>
+
+    <select id="createMenu"  resultType="SysModule">
+        select * from FACE_SYS_MODULE where id != 0
+    </select>
+
+
+</mapper>

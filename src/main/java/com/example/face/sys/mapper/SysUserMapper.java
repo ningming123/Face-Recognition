@@ -1,7 +1,6 @@
 package com.example.face.sys.mapper;
 
 import com.example.face.sys.model.SysUser;
-
 import java.util.List;
 
 public interface SysUserMapper {
