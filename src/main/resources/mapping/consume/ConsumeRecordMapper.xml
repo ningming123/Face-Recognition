@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.face.consume.mapper.ConsumeRecordMapper">
+    <resultMap id="ConsumeRecordModel" type="com.example.face.consume.model.ConsumeRecordModel">
+        <result column="id" jdbcType="VARCHAR" property="id" />
+        <result column="credit_card_id" jdbcType="VARCHAR" property="creditCardId" />
+        <result column="credit_card_no" jdbcType="VARCHAR" property="creditCardNo" />
+        <result column="card_org" jdbcType="VARCHAR" property="cardOrg" />
+        <result column="consume_money" jdbcType="DOUBLE" property="consumeMoney" />
+        <result column="consume_time" jdbcType="VARCHAR" property="consumeDate" />
+        <result column="consume_type" jdbcType="VARCHAR" property="consumeType" />
+
+    </resultMap>
+    
+    <select id="findList" parameterType="com.example.face.consume.vo.ConsumeRecordVo" resultMap="ConsumeRecordModel">
+       select
+          *
+        from
+          CREDIT_CONSUME_RECORD t
+          left join CREDIT_CARD_INFO t1 on t.credit_card_id = t1.id and t1.is_valid = '1'
+        <where>1=1 and t.is_valid = '1'
+            <if test="creditCardNo != null and creditCardNo != '' "> <![CDATA[and t.CREDIT_CARD_NO = #{creditCardNo} ]]></if>
+            <if test="cardOrg != null and cardOrg != '' "> <![CDATA[and t.CARD_ORG = #{cardOrg} ]]></if>
+            <if test="cardType != null and cardType != '' "> <![CDATA[and t.CARD_TYPE = #{cardType} ]]></if>
+            <if test="repaymentDate != null and repaymentDate != '' "> <![CDATA[and t.REPAYMENT_DATE = #{repaymentDate} ]]></if>
+        </where>
+        ORDER BY t.CREATE_TIME DESC
+    </select>
+    
+    <select id="view" parameterType="com.example.face.consume.vo.ConsumeRecordVo" resultMap="ConsumeRecordModel">
+            select * from CREDIT_CONSUME_RECORD t left join CREDIT_CARD_INFO t1 on t.credit_card_id = t1.id  and t1.is_valid = '1'   where is_valid = '1' and  t.id = #{id}
+    </select>
+    
+    <insert id="insertModel" parameterType="ConsumeRecordModel" >
+        INSERT INTO CREDIT_CONSUME_RECORD (
+              ID ,
+              CREDIT_CARD_ID,
+              CONSUME_MONEY,
+              CONSUME_TIME,
+              CONSUME_TYPE,
+              CREATE_TIME,
+              IS_VALID
+        )
+        VALUES (
+              SEQ_CREDIT_CONSUME_RECORD.nextval,
+              #{creditCardId},
+              #{consumeMoney},
+              #{consumeDate},
+              #{consumeType},
+              sysdate,
+              '1'
+        )
+    </insert>
+    
+    <update id="updateModel" parameterType="ConsumeRecordModel">
+        UPDATE CREDIT_CONSUME_RECORD SET
+              CREDIT_CARD_ID = #{creditCardId},
+              CONSUME_MONEY = #{consumeMoney} ,
+              CONSUME_TIME = #{consumeDate},
+              CONSUME_TYPE = #{consumeType},
+              UPDATE_TIME = sysdate
+         WHERE id = #{id}
+    </update>
+    
+    <delete id="deleteById">
+        update CREDIT_CONSUME_RECORD set is_valid = '0' where id = #{id}
+    </delete>
+    
+</mapper>
