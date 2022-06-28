@@ -5,5 +5,10 @@ import java.util.List;
 
 public interface SysModuleService {
 
+    /**
+     * 创建菜单
+     * */
     List<SysModule> createMenu();
+    
+    
 }

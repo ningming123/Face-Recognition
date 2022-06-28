@@ -7,7 +7,7 @@ import org.springframework.boot.web.servlet.ServletComponentScan;
 
 @ServletComponentScan
 @SpringBootApplication(scanBasePackages = {"com.example.face"})
-@MapperScan("com.example.face.sys.mapper")
+@MapperScan("com.example.face")
 public class FaceApplication {
 
     public static void main(String[] args) {

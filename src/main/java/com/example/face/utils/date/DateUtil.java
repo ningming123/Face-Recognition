@@ -935,6 +935,14 @@ public class DateUtil {
         calendar.setTime(date);
         return calendar.get(Calendar.HOUR_OF_DAY);
     }
-
+    
+    /**
+     *  获取当前日期数
+     */
+    public static int getCurrentDay(){
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(new Date());
+        return calendar.get(Calendar.DATE);
+    }
 }
 

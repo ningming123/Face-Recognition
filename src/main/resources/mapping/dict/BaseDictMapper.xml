@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.face.dict.mapper.BaseDictMapper">
+    <resultMap id="BaseDictModel" type="com.example.face.dict.model.BaseDictModel">
+        <result column="id" jdbcType="VARCHAR" property="id" />
+        <result column="dict_code" jdbcType="VARCHAR" property="dictCode" />
+        <result column="dict_name" jdbcType="VARCHAR" property="dictName" />
+        <result column="dict_parent_code" jdbcType="VARCHAR" property="dictParentCode" />
+        <result column="dict_parent_name" jdbcType="VARCHAR" property="dictParentName" />
+    </resultMap>
+    
+    <select id="getDictList" parameterType="String" resultType="BaseDictModel">
+        select * from BASE_DICT where PARENT_CODE = #{dictParentCode}
+    </select>
+    
+    <select id="getDictByCode"  parameterType="String" resultType="BaseDictModel">
+       select * from BASE_DICT where DICT_CODE = #{dictCode}
+    </select>
+    
+    <insert id="insert" parameterType="SysUser" >
+        INSERT INTO FACE_SYS_USER (
+              ID ,
+              USERNAME,
+              PASSWORD,
+              RANDOMCODE,
+              REALNAME,
+              DEPARTMENT,
+              ROLE_ID ,
+              PHONE ,
+              IP,
+              CREATE_TIME,
+              EMAIL,
+              FLAG
+        )
+        VALUES (
+              SEQ_FACE_SYS_USER.nextval,
+              #{userName},
+              #{passWord},
+              #{randomCode},
+              #{realName},
+              #{department},
+              #{roleId},
+              #{phone},
+              #{ip},
+              sysdate,
+              #{email},
+              '1'
+        )
+    </insert>
+    <update id="update" parameterType="SysUser">
+        UPDATE FACE_SYS_USER SET
+              USERNAME = #{userName},
+              PASSWORD = #{passWord} ,
+              RANDOMCODE = #{randomCode} ,
+              REALNAME = #{realName} ,
+              DEPARTMENT = #{department} ,
+              ROLE_ID  = #{roleId} ,
+              PHONE = #{phone}  ,
+              IP  = #{ip} ,
+              UPDATE_TIME = sysdate,
+              EMAIL = #{email} ,
+              FLAG = #{flag}
+    </update>
+</mapper>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.face.credit.mapper.CreditCardMapper">
+    <resultMap id="CreditCardModel" type="com.example.face.credit.model.CreditCardModel">
+        <result column="id" jdbcType="VARCHAR" property="id" />
+        <result column="credit_card_no" jdbcType="VARCHAR" property="creditCardNo" />
+        <result column="card_org" jdbcType="VARCHAR" property="cardOrg" />
+        <result column="card_type" jdbcType="VARCHAR" property="cardType" />
+        <result column="billing_date" jdbcType="VARCHAR" property="billingDate" />
+        <result column="repayment_date" jdbcType="VARCHAR" property="repaymentDate" />
+        <result column="total_quota" jdbcType="INTEGER" property="totalQuota" />
+        <result column="surplus_quota" jdbcType="INTEGER" property="surplusQuota" />
+
+    </resultMap>
+    
+    <select id="findList"  parameterType="com.example.face.credit.vo.CreditCardVO" resultMap="CreditCardModel">
+       select * from CREDIT_CARD_INFO t
+        <where>1=1  and t.is_valid = '1'
+            <if test="creditCardNo != null and creditCardNo != '' "> <![CDATA[and t.CREDIT_CARD_NO = #{creditCardNo} ]]></if>
+            <if test="cardOrg != null and cardOrg != '' "> <![CDATA[and t.CARD_ORG = #{cardOrg} ]]></if>
+            <if test="cardType != null and cardType != '' "> <![CDATA[and t.CARD_TYPE = #{cardType} ]]></if>
+            <if test="repaymentDate != null and repaymentDate != '' "> <![CDATA[and t.REPAYMENT_DATE = #{repaymentDate} ]]></if>
+        </where>
+    </select>
+    
+    <select id="view"  parameterType="com.example.face.credit.vo.CreditCardVO" resultMap="CreditCardModel">
+        select * from CREDIT_CARD_INFO t where 1=1 and is_valid = '1' and id = #{id}
+    </select>
+    
+    <insert id="insert" parameterType="CreditCardModel" >
+        INSERT INTO CREDIT_CARD_INFO (
+              ID ,
+              CREDIT_CARD_NO,
+              CARD_ORG,
+              CARD_TYPE,
+              BILLING_DATE,
+              REPAYMENT_DATE,
+              TOTAL_QUOTA,
+              SURPLUS_QUOTA,
+              CREATE_TIME
+        )
+        VALUES (
+              SEQ_CREDIT_CARD_INFO.nextval,
+              #{creditCardNo},
+              #{cardOrg},
+              #{cardType},
+              #{billingDate},
+              #{repaymentDate},
+              #{surplusQuota},
+              #{totalQuota},
+              sysdate
+        )
+    </insert>
+    
+    <update id="update" parameterType="CreditCardModel">
+        UPDATE CREDIT_CARD_INFO SET
+              CREDIT_CARD_NO = #{creditCardNo},
+              CARD_ORG = #{cardOrg} ,
+              CARD_TYPE = #{cardType} ,
+              BILLING_DATE = #{billingDate} ,
+              REPAYMENT_DATE = #{repaymentDate} ,
+              TOTAL_QUOTA  = #{totalQuota},
+              SURPLUS_QUOTA  = #{surplusQuota},
+              CREATE_TIME  = sysdate
+        
+         WHERE id = #{id}
+    </update>
+    
+    <delete id="deleteById">
+        update CREDIT_CARD_INFO set is_valid = '0' where id = #{id}
+    </delete>
+    
+</mapper>
