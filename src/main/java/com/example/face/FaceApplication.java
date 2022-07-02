@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 
 @ServletComponentScan
-@SpringBootApplication(scanBasePackages = {"com.example.face"})
+@SpringBootApplication(scanBasePackages = {"com.example"})
 @MapperScan("com.example.face")
 public class FaceApplication {
 

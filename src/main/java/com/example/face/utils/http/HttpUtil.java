@@ -7,7 +7,6 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.web.client.RestTemplate;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -46,7 +45,7 @@ public class HttpUtil {
     }
     
     /**
-     * 请求调度系统接口
+     * get
      * */
     public static String getJson(String url, Map paramMap) {
         try{
@@ -64,4 +63,23 @@ public class HttpUtil {
         }
         
     }
+    
+    /**
+     * get
+     * */
+    public static String getJson(String url) {
+        try{
+            String resultStr =
+                HttpRequest.get(url)
+                    .execute()
+                    .body();
+            return resultStr;
+        } catch (Exception e){
+            Map resultErrorMap = new HashMap();
+            resultErrorMap.put("code", "400");
+            return JSON.toJSONString(resultErrorMap);
+        }
+    }
+    
+    
 }

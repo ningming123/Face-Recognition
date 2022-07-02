@@ -5,7 +5,7 @@ import com.alibaba.fastjson.JSONObject;
 
 /**
  * 统一API响应结果封装（继承JSONObject，可当Map用）
- * 
+ *
  * @author Administrator
  *
  */
@@ -21,7 +21,7 @@ public class Result extends JSONObject {
 
 	/**
 	 * JSON封装的实体扩展
-	 * 
+	 *
 	 * @param key
 	 * @param value
 	 * @param force
@@ -36,8 +36,8 @@ public class Result extends JSONObject {
 
 	/**
 	 * 判定是否成功
-	 * 
-	 * @param result
+	 *
+	 * @param
 	 * @return
 	 */
 	public boolean isSuccess() {
