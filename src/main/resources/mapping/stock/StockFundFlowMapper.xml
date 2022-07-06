@@ -5,7 +5,7 @@
     <id column="id" jdbcType="VARCHAR" property="id" />
     <result column="stock_code" jdbcType="VARCHAR" property="stockCode" />
     <result column="stock_name" jdbcType="VARCHAR" property="stockName" />
-    <result column="current_date" jdbcType="VARCHAR" property="currentDate" />
+    <result column="statistics_date" jdbcType="VARCHAR" property="statisticsDate" />
     <result column="r0_in" jdbcType="VARCHAR" property="r0_in" />
     <result column="r0_out" jdbcType="VARCHAR" property="r0_out" />
     <result column="r1_in" jdbcType="VARCHAR" property="r1_in" />

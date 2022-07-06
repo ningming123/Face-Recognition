@@ -23,9 +23,9 @@ public class StockFundFlow {
      */
     private String stockName;
     /**
-     * 当前日期
+     * 统计日期
      */
-    private String currentDate;
+    private String statisticsDate;
     
     /**
      * 超大单流入
@@ -124,14 +124,6 @@ public class StockFundFlow {
     
     public void setStockName(String stockName) {
         this.stockName = stockName;
-    }
-    
-    public String getCurrentDate() {
-        return currentDate;
-    }
-    
-    public void setCurrentDate(String currentDate) {
-        this.currentDate = currentDate;
     }
     
     public BigDecimal getR0_in() {
@@ -268,5 +260,13 @@ public class StockFundFlow {
     
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
+    }
+
+    public String getStatisticsDate() {
+        return statisticsDate;
+    }
+
+    public void setStatisticsDate(String statisticsDate) {
+        this.statisticsDate = statisticsDate;
     }
 }

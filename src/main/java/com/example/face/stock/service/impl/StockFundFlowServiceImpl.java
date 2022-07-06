@@ -61,7 +61,7 @@ public class StockFundFlowServiceImpl implements IStockFundFlowService {
             StockFundFlow stockFundFlow = JSON.parseObject(result.getData().toString(), StockFundFlow.class);
             // 计算各单资金净流（尽量别调用接口获取，防止频繁调用被封ip）
             stockFundFlow = (StockFundFlow)computeNetFlowFund(stockFundFlow);
-            stockFundFlow.setCurrentDate(DateUtil.getSystemDate());
+            stockFundFlow.setStatisticsDate(DateUtil.getSystemDate());
             stockFundFlow.setStockCode(stockCode);
         } catch (Exception e) {
             e.printStackTrace();
@@ -72,7 +72,7 @@ public class StockFundFlowServiceImpl implements IStockFundFlowService {
     }
     
     @Override
-    public List<StockHistoryFundFlow> get5DayFundFlowByJFZT(String stockCode) {
+    public List<StockHistoryFundFlow> syn5DayFundFlowByJFZT(String stockCode) {
         if (StringUtil.isNullOrEmpty(stockCode)) {
             log.info("股票代码为空，无法请求");
             return null;
@@ -89,7 +89,7 @@ public class StockFundFlowServiceImpl implements IStockFundFlowService {
                 // 计算资金净流
                 historyFundFlow = (StockHistoryFundFlow)computeNetFlowFund(historyFundFlow);
                 historyFundFlow.setStockCode(stockCode);
-                historyFundFlow.setCurrentDate(day);
+                historyFundFlow.setStatisticsDate(day);
                 stockHistoryFundFlowMapper.insert(historyFundFlow);
             }
 
@@ -128,4 +128,5 @@ public class StockFundFlowServiceImpl implements IStockFundFlowService {
             return stockHistoryFundFlow;
         }
     }
+
 }

@@ -21,4 +21,10 @@ public interface IStockHistoryFundFlowService {
      */
     List<StockHistoryFundFlow> findList(StockHistoryFundFlowVo stockHistoryFundFlowVo);
 
+    /**
+     * 历史记录查询
+     *
+     * @param stockHistoryFundFlowVo
+     */
+    List<StockHistoryFundFlow> getRecordByStockCode(StockHistoryFundFlowVo stockHistoryFundFlowVo);
 }

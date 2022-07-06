@@ -26,5 +26,5 @@ public interface IStockFundFlowService {
      * @param stockCode 股票代码
      * @return list
      */
-    List<StockHistoryFundFlow> get5DayFundFlowByJFZT(String stockCode);
+    List<StockHistoryFundFlow> syn5DayFundFlowByJFZT(String stockCode);
 }

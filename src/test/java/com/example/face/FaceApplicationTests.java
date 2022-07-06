@@ -47,7 +47,7 @@ class FaceApplicationTests {
     void getFundFlowRealTimeByJFZT(){
         String stockCode = "002507";
 //        stockFundFlowService.getRealTimeFundFlowByJFZT(stockCode);
-        stockFundFlowService.get5DayFundFlowByJFZT(stockCode);
+        stockFundFlowService.syn5DayFundFlowByJFZT(stockCode);
         List<String> lastWeekDay = DateUtil.getLastWeekDay(DateUtil.defaultDateFormatStr);
         System.out.println(lastWeekDay);
     }

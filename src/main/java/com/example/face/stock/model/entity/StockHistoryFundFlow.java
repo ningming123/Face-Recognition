@@ -25,9 +25,9 @@ public class StockHistoryFundFlow {
      */
     private String stockName;
     /**
-     * 当前日期
+     * 统计日期
      */
-    private String currentDate;
+    private String statisticsDate;
     
     /**
      * 超大单流入
@@ -38,6 +38,15 @@ public class StockHistoryFundFlow {
      */
     private BigDecimal r0_out;
     /**
+     * 超大单净流入
+     */
+    private BigDecimal r0_net_in;
+    /**
+     * 超大单5日平均净流
+     */
+    private BigDecimal r0_aver5_in;
+
+    /**
      * 大单流入
      */
     private BigDecimal r1_in;
@@ -45,6 +54,15 @@ public class StockHistoryFundFlow {
      * 大单流出
      */
     private BigDecimal r1_out;
+
+    /**
+     * 大单净流入
+     */
+    private BigDecimal r1_net_in;
+    /**
+     * 超大单5日平均净流
+     */
+    private BigDecimal r1_aver5_in;
     /**
      * 中单流入
      */
@@ -54,6 +72,14 @@ public class StockHistoryFundFlow {
      */
     private BigDecimal r2_out;
     /**
+     * 中单净流入
+     */
+    private BigDecimal r2_net_in;
+    /**
+     * 超大单5日平均净流
+     */
+    private BigDecimal r2_aver5_in;
+    /**
      * 小单流入
      */
     private BigDecimal r3_in;
@@ -62,21 +88,14 @@ public class StockHistoryFundFlow {
      */
     private BigDecimal r3_out;
     /**
-     * 超大单净流入
-     */
-    private BigDecimal r0_net_in;
-    /**
-     * 大单净流入
-     */
-    private BigDecimal r1_net_in;
-    /**
-     * 中单净流入
-     */
-    private BigDecimal r2_net_in;
-    /**
      * 小单净流入
      */
     private BigDecimal r3_net_in;
+    /**
+     * 超大单5日平均净流
+     */
+    private BigDecimal r3_aver5_in;
+
     
     /**
      * 备注
@@ -127,14 +146,6 @@ public class StockHistoryFundFlow {
     
     public void setStockName(String stockName) {
         this.stockName = stockName;
-    }
-    
-    public String getCurrentDate() {
-        return currentDate;
-    }
-    
-    public void setCurrentDate(String currentDate) {
-        this.currentDate = currentDate;
     }
     
     public BigDecimal getR0_in() {
@@ -272,5 +283,45 @@ public class StockHistoryFundFlow {
     
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
+    }
+
+    public String getStatisticsDate() {
+        return statisticsDate;
+    }
+
+    public void setStatisticsDate(String statisticsDate) {
+        this.statisticsDate = statisticsDate;
+    }
+
+    public BigDecimal getR0_aver5_in() {
+        return r0_aver5_in;
+    }
+
+    public void setR0_aver5_in(BigDecimal r0_aver5_in) {
+        this.r0_aver5_in = r0_aver5_in;
+    }
+
+    public BigDecimal getR1_aver5_in() {
+        return r1_aver5_in;
+    }
+
+    public void setR1_aver5_in(BigDecimal r1_aver5_in) {
+        this.r1_aver5_in = r1_aver5_in;
+    }
+
+    public BigDecimal getR2_aver5_in() {
+        return r2_aver5_in;
+    }
+
+    public void setR2_aver5_in(BigDecimal r2_aver5_in) {
+        this.r2_aver5_in = r2_aver5_in;
+    }
+
+    public BigDecimal getR3_aver5_in() {
+        return r3_aver5_in;
+    }
+
+    public void setR3_aver5_in(BigDecimal r3_aver5_in) {
+        this.r3_aver5_in = r3_aver5_in;
     }
 }

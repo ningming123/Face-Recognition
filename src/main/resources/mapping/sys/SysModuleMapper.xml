@@ -10,7 +10,7 @@
     </resultMap>
 
     <select id="createMenu"  resultType="SysModule">
-        select * from FACE_SYS_MODULE where id != 0
+        select * from FACE_SYS_MODULE where id != '0' and flag = '1'
     </select>
 
 
