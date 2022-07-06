@@ -1,6 +1,9 @@
 package com.example.face.stock.service;
 
 import com.example.face.stock.model.entity.StockFundFlow;
+import com.example.face.stock.model.entity.StockHistoryFundFlow;
+
+import java.util.List;
 
 /**
  * 股票资金流处理
@@ -15,5 +18,13 @@ public interface IStockFundFlowService {
      *
      * @param stockCode 股票代码
      */
-    StockFundFlow getFundFlowRealTimeByJFZT(String stockCode);
+    StockFundFlow getRealTimeFundFlowByJFZT(String stockCode);
+    
+    /**
+     * 从九方智投获取近5日资金流数据
+     *
+     * @param stockCode 股票代码
+     * @return list
+     */
+    List<StockHistoryFundFlow> get5DayFundFlowByJFZT(String stockCode);
 }

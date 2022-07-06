@@ -1,15 +1,17 @@
 package com.example.face.stock.model.entity;
 
+import javax.persistence.Table;
 import java.math.BigDecimal;
 import java.util.Date;
 
 /**
- * 资金流实体（资金字段以九方智投为准）
+ * 历史资金流实体（资金字段以九方智投为准）
  *
  * @author ning
  * @date 2022-06-28
  */
-public class StockFundFlow {
+@Table(name = "stock_history_fund_flow")
+public class StockHistoryFundFlow {
     /**
      * id
      */
@@ -75,7 +77,6 @@ public class StockFundFlow {
      * 小单净流入
      */
     private BigDecimal r3_net_in;
-
     
     /**
      * 备注
@@ -101,6 +102,8 @@ public class StockFundFlow {
      * 记录更新时间
      */
     private Date updateTime;
+    
+
     
     public String getId() {
         return id;
@@ -230,6 +233,7 @@ public class StockFundFlow {
         this.r3_net_in = r3_net_in;
     }
 
+    
     public String getRemark() {
         return remark;
     }

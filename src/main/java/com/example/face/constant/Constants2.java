@@ -13,4 +13,5 @@ public class Constants2 {
      * */
     public static final String CREDIT_TYPE_REPAYMENT = "2";
     
+    
 }

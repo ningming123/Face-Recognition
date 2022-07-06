@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.face.stock.mapper.StockFundFlowMapper">
+  <resultMap id="BaseResultMap" type="com.example.face.stock.model.entity.StockFundFlow">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="stock_code" jdbcType="VARCHAR" property="stockCode" />
+    <result column="stock_name" jdbcType="VARCHAR" property="stockName" />
+    <result column="current_date" jdbcType="VARCHAR" property="currentDate" />
+    <result column="r0_in" jdbcType="VARCHAR" property="r0_in" />
+    <result column="r0_out" jdbcType="VARCHAR" property="r0_out" />
+    <result column="r1_in" jdbcType="VARCHAR" property="r1_in" />
+    <result column="r1_out" jdbcType="VARCHAR" property="r1_out" />
+    <result column="r2_in" jdbcType="VARCHAR" property="r2_in" />
+    <result column="r2_out" jdbcType="VARCHAR" property="r2_out" />
+    <result column="r3_in" jdbcType="VARCHAR" property="r3_in" />
+    <result column="r3_out" jdbcType="VARCHAR" property="r3_out" />
+    <result column="r0_net_in" jdbcType="VARCHAR" property="r0_net_in" />
+    <result column="r1_net_in" jdbcType="VARCHAR" property="r1_net_in" />
+    <result column="r2_net_in" jdbcType="VARCHAR" property="r2_net_in" />
+    <result column="r3_net_in" jdbcType="VARCHAR" property="r3_net_in" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="create_user" jdbcType="VARCHAR" property="createUser" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_user" jdbcType="VARCHAR" property="updateUser" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+
+  </resultMap>
+  
+</mapper>
